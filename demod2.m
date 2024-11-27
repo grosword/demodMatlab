@@ -29,7 +29,7 @@ normalizedHigh = highCutoff / nyquistFreq;
 filteredSignal = filter(b, a, amDemodulated);
 
 audioSignal = resample(filteredSignal, audioFs, fs);
-audioSignal = audioSignal + mean(audioSignal);
+audioSignal = audioSignal - mean(audioSignal);
 audioSignal = audioSignal / max(abs(audioSignal)); 
 audiowrite(outputFile, audioSignal, audioFs);
 
